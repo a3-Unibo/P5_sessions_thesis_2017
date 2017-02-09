@@ -1,3 +1,8 @@
+/*
+A simple field class used with Perlin noise
+
+*/
+
 float res = 10.0;
 float ns = 0.0035;
 int nX, nY, count;
