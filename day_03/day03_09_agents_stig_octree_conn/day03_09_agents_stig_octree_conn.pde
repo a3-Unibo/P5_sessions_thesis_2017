@@ -37,6 +37,7 @@ boolean rec = false;
 boolean go = false;
 boolean phase2 = false;
 boolean dispBox = false;
+boolean dispOct = false;
 float cR, cI, sR, sI, aR, aI; // cohesion & separation radius & intensity
 
 AABB bBox;
@@ -74,7 +75,7 @@ void setup() {
 
   // _____________________   octree for trails
 
-  trailOctree = initOctree(new Vec3D(), new Vec3D(wX, wY, wZ), allTrails);
+  trailOctree = initOctreeWorld(new Vec3D(wX, wY, wZ), allTrails);
 
 
   conns = new ArrayList<Connection>();
@@ -101,11 +102,11 @@ void draw() {
       for (Agent ag : agents) {
         //                 octree     cR, aR, sR, cI, aI, sI, use easing
         ag.octPointsFlock(trailOctree, 40, 0, 10, 0.1, 0, 1, false);
-        
+
         // boundary behavior
         //ag.wrap();
         ag.bounce();
-        
+
         ag.updateOcTrail(20, trailOctree);
         ag.move();
         ag.display();
@@ -135,6 +136,8 @@ void draw() {
     box(world.x, world.y, world.z);
   }
 
+  if (dispOct) drawOctree(trailOctree, true, color(255, 0, 255), 5);
+
   if (keyPressed && key == 'i') saveFrame("img/flock_####.png");
   if (rec) {
     saveFrame("video/flock_stig_####.jpg");
@@ -149,6 +152,7 @@ void keyPressed() {
   if (key == 'T') trailDisp = !trailDisp;
   if (key == 't') trailMode = !trailMode;
   if (key=='b') dispBox = !dispBox;
+  if (key == 'o') dispOct = !dispOct;
   if (key == ' ' && !phase2) go = !go;
   if (key == '2') {
     if (!phase2) {

@@ -34,6 +34,7 @@ boolean tDisp=true;
 boolean trailMode=true;
 boolean rec = false;
 boolean go = false;
+boolean dispOct = false;
 float cR, cI, sR, sI, aR, aI; // cohesion & separation radius & intensity
 
 AABB bBox;
@@ -71,7 +72,7 @@ void setup() {
 
   // _____________________   octree for trails
 
-  trailOctree = initOctree(new Vec3D(), new Vec3D(wX, wY, wZ), allTrails);
+  trailOctree = initOctreeWorld(new Vec3D(wX, wY, wZ), allTrails);
 
 
 
@@ -118,6 +119,8 @@ void draw() {
   stroke(0, 60);
   strokeWeight(0.5);
   box(world.x, world.y, world.z);
+  
+  if (dispOct) drawOctree(trailOctree, true, color(255,0,255),5);
 
   if (keyPressed && key == 'i') saveFrame("img/flock_####.png");
   if (rec) {
@@ -133,4 +136,5 @@ void keyPressed() {
   if (key == 'T') tDisp = !tDisp;
   if (key == 't') trailMode = !trailMode;
   if (key == ' ') go = !go;
+  if (key == 'o') dispOct = !dispOct;
 }
