@@ -9,7 +9,7 @@ Code by Alessio Erioli
 
 */
 
-float res = 10.0;
+float res = 5.0;
 float ns = 0.008;
 int nX, nY, count;
 
@@ -68,13 +68,13 @@ void draw() {
 
   if (go) {
     for (Particle p : particles) {
-      p.moveStigSample();
-      //p.moveStig();
+      //p.moveStigSample();
+      p.moveStig();
       p.wrap();
       if (dispPart) p.display();
     }
 
-    field.evapLin(0.001);
+    field.evapLin(0.0007);
     //field.evapLin(0.0005);
   }
 

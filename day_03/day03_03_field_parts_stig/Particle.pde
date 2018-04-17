@@ -63,8 +63,8 @@ class Particle {
 
   void moveStigSample() { // smaples a cloud of scattered points
     float maxVal = 0, val;
-    int nSamples = 20;
-    int rad = 10;
+    int nSamples = 50;
+    int rad = 50;
 
     PVector dir = PVector.random2D().setMag(vel.mag());
     PVector v, futPos = PVector.add(pos, vel.copy().setMag(rad*1.5));

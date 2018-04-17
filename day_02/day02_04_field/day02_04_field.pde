@@ -1,7 +1,7 @@
 /*
 A simple field class used with Perlin noise
-
-*/
+ 
+ */
 
 float res = 10.0;
 float ns = 0.0035;
@@ -10,6 +10,7 @@ Field field;
 boolean discrete = false;
 boolean lines = true;
 boolean update = false;
+boolean symmetry = false;
 
 PGraphics pg;
 
@@ -21,7 +22,7 @@ void setup() {
   nY = int(height/res);
   noiseSeed(10);
   noiseDetail(3);
-  field = new Field(res, res, ns);
+  field = new Field(width, height, res, res, ns, symmetry);
   //field = new Field(90,160,ns);
   ellipseMode(CENTER);
 
@@ -34,7 +35,7 @@ void setup() {
     field.dispTiles();
     if (lines)field.dispLines(res*0.5);
   }
-  
+
   count = 0;
 }
 
@@ -61,4 +62,8 @@ void keyPressed() {
   if (key=='d') discrete = !discrete;
   if (key=='l') lines = !lines;
   if (key ==' ') update = !update;
+  if (key =='s') {
+    symmetry = !symmetry;
+    field = new Field(symmetry?int(width*0.5):width, height, res, res, ns, symmetry);
+  }
 }

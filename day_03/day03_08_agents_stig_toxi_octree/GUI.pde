@@ -28,7 +28,7 @@ void initGui() {
     .setWidth(w).setHeight(h)
     .setRange(50, 300).setValue(cR)
     .setColor(gray);
-    //.getCaptionLabel().getStyle().marginLeft=-30;
+    //.getCaptionLabel().getStyle().marginRight=130;
 
   y+=dY;
   c5.addSlider("cI")
@@ -89,7 +89,7 @@ void initGui() {
     .setWidth(bW).setHeight(h)
     .setColor(gray);
 
-  c5.addToggle("trailDisp")
+  c5.addToggle("tDisp")
     .setLabel("trails")
     .setPosition(x+bS, y)
     .setWidth(bW).setHeight(h)

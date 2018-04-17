@@ -19,7 +19,7 @@ class Agent {
   }
 
   void update() {
-    flock(Agents);
+    flock(agents);
     move();
     bounce();
   }

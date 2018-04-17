@@ -11,18 +11,19 @@
 Agent a;
 PVector t;
 int nAgents = 1000;
-ArrayList <Agent>Agents;
+ArrayList <Agent> agents;
 
 
 void setup() {
   size(800, 800);
   surface.setSize(displayWidth-20, displayHeight-50); // how to resize a window
   
-  Agents = new ArrayList<Agent>();
+  agents = new ArrayList<Agent>();
 
   for (int i=0; i<nAgents; i++) {
-    a = new Agent(new PVector(random(width), random(height)), PVector.random2D().mult(random(3)));
-    Agents.add(a);
+    a = new Agent(new PVector(random(width), random(height)), 
+    PVector.random2D().mult(random(3)));
+    agents.add(a);
   }
   t = new PVector(10, 10);
 }
@@ -32,7 +33,7 @@ void setup() {
 void draw() {
   //background(0);
   t = new PVector(mouseX, mouseY);
-  for (Agent ag : Agents) {// < altro modo di iterare
+  for (Agent ag : agents) {// < altro modo di iterare
     if (mousePressed) ag.seek(t);
     ag.update();
     ag.display();

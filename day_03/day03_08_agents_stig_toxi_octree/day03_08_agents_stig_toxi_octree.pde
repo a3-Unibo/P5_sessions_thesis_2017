@@ -127,7 +127,7 @@ void draw() {
     saveFrame("video/flock_stig_####.jpg");
   }
 
-  //dispGUI();
+  dispGUI();
 } // end draw
 
 void keyPressed() {
